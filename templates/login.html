@@ -1,0 +1,19 @@
+<html>
+   <body>
+   	<h1>Log In</h1>
+
+   		{%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+
+      <form action = "http://localhost:5000/login" method = "post">
+         <p>Email:</p>
+         <p><input type = "text" name = "email" /></p>
+         <p>password:</p>
+         <p><input type = "password" name = "password" /></p>
+         <p><input type = "submit" value = "Log In" /></p>
+      </form>
+   </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <script type = "text/javascript" >
+         function verifyPasswords(){
+            if(document.getElementById("pwd").value!=document.getElementById("cnf_pwd").value)
+            {
+               alert("Password and confirm password does not match!");
+               event.preventDefault(); 
+               return false;
+            }  
+         }
+      </script>
+   </head>
+
+   <body>
+      <h3>Sign up</h3>
+      <hr/>
+      
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+      
+      <form action = "http://localhost:5000/users/create" method = "post" id="signup" onsubmit="verifyPasswords()">
+         <label for = "name">Name</label><br>
+         <input type = "text" name = "name" placeholder = "Name" /><br><br>
+         <label for = "email">Email</label><br>
+         <input type = "text" name = "email" placeholder = "email" /><br><br>
+         <label for = "phone">Phone</label><br>
+         <input name = "phone" placeholder = "phone"></input><br><br>
+         <label for = "password">Password</label><br>
+         <input type = "password" name = "password" placeholder = "password" id="pwd" /><br><br>
+         <label for = "password">Confirm Password</label><br>
+         <input type = "password" name = "confirm_password" placeholder = "confirm password" id="cnf_pwd"/><br><br>
+         <input type = "submit" value = "Submit"/>
+      </form>
+   </body>
+</html>
